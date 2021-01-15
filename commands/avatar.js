@@ -3,6 +3,7 @@ module.exports = {
     description: 'Retrieve users avatar',
     requiredArgs: false,
     usage: '<@user>(s)',
+    channelOnly: false,
     execute(message, args) {
         if (!args.length || message.mentions.users.size < 1) {
             return message.channel.send(`Your avatar: <${message.author.displayAvatarURL({ format: "png", dynamic: true })}`);
