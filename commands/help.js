@@ -25,7 +25,7 @@ module.exports = {
                 })
                 .catch(error => {
                     console.error(`Could not send help DM to ${message.author.tag}.\n`, error);
-                    message.reply('it seems like I can\'t DM you! Do you have DMs disabled?');
+                    message.reply('It seems like I can\'t DM you! Do you have DMs disabled?');
                 });
         }
         else {
@@ -33,7 +33,7 @@ module.exports = {
             const command = commands.get(name) || commands.find(c => c.aliases && c.aliases.includes(name));
 
             if (!command) {
-                return message.reply('that\'s not a valid command!');
+                return message.reply('That\'s not a valid command!');
             }
 
             data.push(`**Command:** ${command.name}`);
