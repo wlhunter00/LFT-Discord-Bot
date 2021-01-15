@@ -4,6 +4,8 @@ module.exports = {
     requiredArgs: false,
     channelOnly: false,
     cooldown: 3,
+    aliases: ['pong'],
+
     execute(message) {
         message.channel.send('Pong.');
     }
