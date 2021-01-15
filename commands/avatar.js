@@ -4,6 +4,8 @@ module.exports = {
     requiredArgs: false,
     usage: '<@user>(s)',
     channelOnly: false,
+    cooldown: 5,
+    aliases: ['icon', 'pfp'],
     execute(message, args) {
         if (!args.length || message.mentions.users.size < 1) {
             return message.channel.send(`Your avatar: <${message.author.displayAvatarURL({ format: "png", dynamic: true })}`);
