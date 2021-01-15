@@ -3,6 +3,7 @@ module.exports = {
     description: 'Test the bot',
     requiredArgs: false,
     channelOnly: false,
+    cooldown: 3,
     execute(message) {
         message.channel.send('Pong.');
     }
