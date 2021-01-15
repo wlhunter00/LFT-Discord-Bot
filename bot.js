@@ -33,16 +33,22 @@ client.on('message', message => {
     // Bot commands
     if (message.content.startsWith(prefix)) {
         const args = message.content.slice(prefix.length).trim().split(/ +/);
-        const command = args.shift().toLowerCase();
+        const commandName = args.shift().toLowerCase();
 
-        if (!client.commands.has(command)) return;
+        if (!client.commands.has(commandName)) return;
+
+        const command = client.commands.get(commandName);
+
+        if (command.requiredArgs && !args.length) {
+            return message.channel.send(`You didn't provide any arguments, ${message.author}!`);
+        }
 
         try {
-            client.commands.get(command).execute(message, args);
+            command.execute(message, args);
         }
         catch (err) {
             console.error(err);
-            message.reply(`there was an error of ${err} with the command of ${command}`);
+            message.reply(`there was an error of ${err} with the command of ${commandName}`);
         }
     }
 });
