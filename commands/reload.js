@@ -3,8 +3,8 @@ module.exports = {
     description: 'Reloads a command',
     cooldown: 5,
     usage: '[command name]',
-    requiredArgs: true,
-    defaultChannel: false,
+    requiredArgs: 1,
+    channelOnly: false,
 
     execute(message, args) {
         const commandName = args[0].toLowerCase();

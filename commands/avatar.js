@@ -1,7 +1,7 @@
 module.exports = {
     name: 'avatar',
     description: 'Retrieve users avatar',
-    requiredArgs: false,
+    requiredArgs: 0,
     usage: '<@user>(s)',
     channelOnly: false,
     cooldown: 5,

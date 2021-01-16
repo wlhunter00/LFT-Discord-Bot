@@ -1,7 +1,7 @@
 module.exports = {
     name: 'args-info',
     description: 'Argument test command',
-    requiredArgs: true,
+    requiredArgs: 1,
     usage: 'foo',
     channelOnly: true,
 

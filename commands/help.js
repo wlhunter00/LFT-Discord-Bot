@@ -6,8 +6,8 @@ module.exports = {
     aliases: ['commands'],
     usage: '[command name]',
     cooldown: 2,
-    requiredArgs: false,
-    defaultChannel: false,
+    requiredArgs: 0,
+    channelOnly: false,
 
     execute(message, args) {
         const data = [];
@@ -42,6 +42,7 @@ module.exports = {
             if (command.description) data.push(`**Description:** ${command.description}`);
             if (command.usage) data.push(`**Usage:** ${prefix}${command.name} ${command.usage}`);
             if (command.permissions) data.push(`**Required Permissions: ${command.permissions}`);
+            if (command.requiredArgs) data.push(`**Required Arguments: ${command.requiredArgs}`);
 
             data.push(`**Cooldown:** ${command.cooldown || 3} second(s)`);
 
