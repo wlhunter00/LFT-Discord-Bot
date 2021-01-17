@@ -1,3 +1,5 @@
+const { getUser } = require("../helper_functions/mentions");
+
 module.exports = {
     name: 'avatar',
     description: 'Retrieve users avatar',
@@ -12,10 +14,9 @@ module.exports = {
             return message.channel.send(`Your avatar: <${message.author.displayAvatarURL({ format: "png", dynamic: true })}`);
         }
 
-        const avatarList = message.mentions.users.map(user => {
-            return `${user.username}'s avatar: <${user.displayAvatarURL({ format: "png", dynamic: true })}`;
-        });
-
-        message.channel.send(avatarList);
+        const user = getUser(args[0], message.client);
+        return message.channel.send(`${user.username}'s avatar: <${user.displayAvatarURL({ format: "png", dynamic: true })}`);
     }
+
+
 }
