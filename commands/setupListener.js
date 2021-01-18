@@ -3,28 +3,31 @@ const { regions } = require('../helper_functions/supportedRegions');
 
 module.exports = {
     name: 'setup',
-    description: 'Sets a channel as a LFT channel. Please identify what game and region the channel is for.',
+    description: 'Sets a channel as a LFT channel. Please identify what game and region the channel is for. If no channel is mentioned, then a listener will be added to the channel posted in.',
     cooldown: 5,
-    usage: '[game] [NA|EU|OCE|ASIA] [#channel]',
+    usage: '[NA|EU|OCE|ASIA] [game] [#channel]',
     requiredArgs: 2,
     channelOnly: true,
-    aliases: ['listener', 'listen'],
+    aliases: ['listen', 'new', 'setupListener', 'setup_listener'],
     permissions: 'MANAGE_CHANNELS',
 
     execute(message, args) {
-        // TODO: Need to check if it is a supported game
-        const game = args[0].toLowerCase();
+        // Channel is either mentioned channel or the channel this was posted in
+        const channel = getChannel(args[2], message.client) || message.channel;
+        if (args[2] && channel === message.channel) {
+            return message.channel.send(`${args[2]} is not a supported channel. Please include a # before the name of the channel you would like to add a listener to.`);
+        }
 
         // Check to see if the region is one we support
-        const region = regions.find(region => (region.toLowerCase() === args[1].toLowerCase()));
+        const region = regions.find(region => (region.toLowerCase() === args[0].toLowerCase()));
         if (!region) {
             let reply = [`${args[1]} is not a supported region! Currently, the supported regions are: `];
             reply.push(regions.map(region => region).join(', '));
             return message.channel.send(reply, { split: true });
         }
 
-        // Channel is either mentioned channel or the channel this was posted in
-        const channel = getChannel(args[2], message.client) || message.channel;
+        // TODO: Need to check if it is a supported game
+        const game = args[1].toLowerCase();
 
         // Then lookup to see if the game exists in our db
         // If it doesn't exist, return error message
