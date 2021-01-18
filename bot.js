@@ -2,7 +2,8 @@ require('dotenv').config();
 
 const fs = require('fs');
 const Discord = require('discord.js');
-const { prefix, lft } = require('./config.json');
+const { prefix, lftTerms } = require('./config.json');
+const { parseMessage } = require('./message_parse');
 const client = new Discord.Client();
 
 // Importing commands from folder
@@ -28,8 +29,8 @@ client.on('message', message => {
     console.log(message.content);
 
     // Identify any LFT messages
-    if (message.content.includes(lft)) {
-        message.channel.send("LFT Message Found.");
+    if (lftTerms.some(term => message.content.toLowerCase().includes(term.toLowerCase()))) {
+        parseMessage(message);
     }
 
     // Bot commands

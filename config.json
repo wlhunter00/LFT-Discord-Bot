@@ -1,4 +1,8 @@
 {
     "prefix": "!",
-    "lft": "lft"
+    "lftTerms": [
+        "lft",
+        "looking for team",
+        "lfo"
+    ]
 }
