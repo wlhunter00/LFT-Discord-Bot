@@ -45,7 +45,7 @@ module.exports = {
         const editData = {
             channelID: channel.id,
             serverID: channel.guild.id,
-            game: game.id,
+            gameID: game.id,
             region: region,
         }
         console.log(editData);
