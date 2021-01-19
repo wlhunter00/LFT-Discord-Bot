@@ -49,7 +49,47 @@ const valorant = {
         {
             name: 'viper',
             aliases: []
-        }
+        },
+        {
+            name: 'breach',
+            aliases: []
+        },
+        {
+            name: 'skye',
+            aliases: []
+        },
+        {
+            name: 'sova',
+            aliases: []
+        },
+        {
+            name: 'killjoy',
+            aliases: ['kj']
+        },
+        {
+            name: 'cypher',
+            aliases: []
+        },
+        {
+            name: 'jett',
+            aliases: []
+        },
+        {
+            name: 'phoenix',
+            aliases: []
+        },
+        {
+            name: 'reyna',
+            aliases: []
+        },
+        {
+            name: 'yoru',
+            aliases: []
+        },
+        {
+            name: 'raze',
+            aliases: []
+        },
     ],
     roles: [
         {
