@@ -69,6 +69,7 @@ const getSupportedGameNames = () => {
     }
     return gameNames;
 }
+
 const getAllGameIDs = () => {
     let gameIDs = [];
     for (const game of games) {
