@@ -27,7 +27,7 @@ module.exports = {
         // Post request and handle the transaction
 
         // Success
-        return message.channel.send(`An LFT listener has been removed on ${channel.name}..`);
+        return message.channel.send(`An LFT listener has been removed on ${channel.name}.`);
         // Fail
 
     },
