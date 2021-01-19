@@ -1,5 +1,6 @@
-const valorant = {
+module.exports = {
     name: 'valorant',
+    id: '1',
     ranks: [
         {
             name: 'bronze',
@@ -122,5 +123,3 @@ const valorant = {
         },
     ],
 }
-
-exports.valorant = valorant;

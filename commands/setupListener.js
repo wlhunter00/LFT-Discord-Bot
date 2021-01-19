@@ -1,5 +1,7 @@
 const { getChannel } = require('../helper_functions/mentions');
 const { regions } = require('../helper_functions/supportedRegions');
+const { getGame, getSupportedGameNames } = require('../helper_functions/games');
+const { capitalizeFirstLetter } = require('../helper_functions/formatting');
 
 module.exports = {
     name: 'setup',
@@ -21,13 +23,19 @@ module.exports = {
         // Check to see if the region is one we support
         const region = regions.find(region => (region.toLowerCase() === args[0].toLowerCase()));
         if (!region) {
-            let reply = [`${args[1]} is not a supported region! Currently, the supported regions are: `];
+            let reply = [`${args[0]} is not a supported region! Currently, the supported regions are: `];
             reply.push(regions.map(region => region).join(', '));
             return message.channel.send(reply, { split: true });
         }
 
-        // TODO: Need to check if it is a supported game
-        const game = args[1].toLowerCase();
+        // Check to see if it is a supported game
+        const game = getGame(args[1].toLowerCase());
+        if (!game) {
+            let reply = [`${args[1]} is not a supported game! Currently, the supported games are: `];
+            const gameNames = getSupportedGameNames();
+            reply.push(gameNames.map(game => game).join(', '));
+            return message.channel.send(reply, { split: true });
+        }
 
         // Then lookup to see if the game exists in our db
         // If it doesn't exist, return error message
@@ -36,14 +44,15 @@ module.exports = {
         const postData = {
             channelID: channel.id,
             serverID: channel.guild.id,
-            game: game,
+            gameID: game.id,
             region: region,
         }
+        console.log(postData);
 
         // Post request and handle the transaction
 
         // Sucess
-        return message.channel.send(`A LFT listener has been added to ${channel.name}, for ${region} ${game}. If this was a mistake, please !remove or !edit.`);
+        return message.channel.send(`A LFT listener has been added to ${channel.name}, for ${region} ${capitalizeFirstLetter(game.name)}. If this was a mistake, please !remove or !edit.`);
         // Fail
 
     },
