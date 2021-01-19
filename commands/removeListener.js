@@ -1,5 +1,4 @@
 const { getChannel } = require('../helper_functions/mentions');
-const { regions } = require('../helper_functions/supportedRegions');
 
 module.exports = {
     name: 'remove',
@@ -15,7 +14,7 @@ module.exports = {
         // Channel is either mentioned channel or the channel this was posted in
         const channel = getChannel(args[0], message.client) || message.channel;
         if (args[0] && channel === message.channel) {
-            return message.channel.send(`${args[0]} is not a supported channel. Please include a # before the name of the channel you would like to add a listener to.`);
+            return message.channel.send(`${args[0]} is not a supported channel. Please include a # before the name of the channel you would like to remove a listener from.`);
         }
         // TODO: Check to see if there is currently a listener on the channel. If there is not, then return
 

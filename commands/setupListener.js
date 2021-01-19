@@ -1,5 +1,5 @@
 const { getChannel } = require('../helper_functions/mentions');
-const { regions } = require('../helper_functions/supportedRegions');
+const { regions } = require('../config.json');
 const { getGame, getSupportedGameNames } = require('../helper_functions/games');
 const { capitalizeFirstLetter } = require('../helper_functions/formatting');
 
@@ -10,7 +10,7 @@ module.exports = {
     usage: '[NA|EU|OCE|ASIA] [game] [#channel]',
     requiredArgs: 2,
     channelOnly: true,
-    aliases: ['listen', 'new', 'setupListener', 'setup_listener'],
+    aliases: ['listen', 'new', 'setupListener', 'setup_listener', 'add'],
     permissions: 'MANAGE_CHANNELS',
 
     execute(message, args) {

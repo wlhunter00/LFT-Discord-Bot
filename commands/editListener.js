@@ -1,5 +1,5 @@
 const { getChannel } = require('../helper_functions/mentions');
-const { regions } = require('../helper_functions/supportedRegions');
+const { regions } = require('../config.json');
 const { getGame, getSupportedGameNames } = require('../helper_functions/games');
 const { capitalizeFirstLetter } = require('../helper_functions/formatting');
 
