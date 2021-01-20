@@ -1,6 +1,7 @@
 const parseMessageFunction = (message) => {
-    message.channel.send("LFT Message Found.");
-    console.log(message.content);
-}
+  message.channel.send("LFT Message Found.");
+  console.log(message.content);
+};
 
 exports.parseMessage = parseMessageFunction;
+//test to push
