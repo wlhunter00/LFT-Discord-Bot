@@ -26,7 +26,7 @@ client.once('ready', () => {
 client.on('message', message => {
     // Ignore bot messages
     if (message.author.bot) return;
-    console.log(message.content);
+    // console.log(message.content);
 
     // Identify any LFT messages
     if (lftTerms.some(term => message.content.toLowerCase().includes(term.toLowerCase()))) {
