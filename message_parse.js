@@ -19,9 +19,6 @@ const parseMessageFunction = (message) => {
 
   const arrRanks = game.ranks;
 
-
-
-
   for (const rank of arrRanks) {
     if (lowercaseMessage.includes(rank.name)) {
       console.log(rank.name);
